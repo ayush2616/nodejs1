@@ -1,11 +1,10 @@
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var app = require('express')();
-var http = require('http').Server(app);
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-app.get('/', function(req, res){
-  res.send('<h1>Hello world</h1>');
+app.listen(server_port, server_ip_address, function () {
+
+    console.log( "Listening on " + server_ip_address + ", server_port " + server_port  );
+
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
